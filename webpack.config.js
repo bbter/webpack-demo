@@ -1,27 +1,20 @@
-var path = require("path");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const base = require("./webpack.config.base.js");
 
 module.exports = {
-  mode: "development",
-  entry: "./src/index.js",
-  output: {
-    filename: "index.[contenthash].js",
-  },
-  devtool: 'inline-source-map',
+  ...base,
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: './dist',
+    contentBase: "./dist",
   },
-  plugins: [new HtmlWebpackPlugin(
-      {
-        title: 'bbter - 白炳钿',
-        template: 'src/assets/index.html'
-      }
-  )],
+  mode: "development",
   module: {
     rules: [
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
